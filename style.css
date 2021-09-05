@@ -1,0 +1,94 @@
+@import url('https://fonts.googleapis.com/css2?family=Besley:wght@400;500;600&display=swap');
+
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Besley', serif;
+}
+
+.container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+header{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid red;
+    min-height: 300px;
+    min-width: 350px;
+}
+
+.color-theme{
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: center;
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+/* Dark mode switch styling */
+
+input[type="checkbox"]{
+    cursor: pointer;
+    border-radius: 20px;
+    width: 50px;
+    height: 20px;
+    -webkit-appearance: none;
+    background: hsl(223,50%,87%);
+    outline: none;
+    transition: ease-in-out 0.2s;
+}
+
+input:hover[type="checkbox"]{
+    background: hsl(223,50%,70%);
+}
+
+input:checked[type="checkbox"]{
+    background: hsl(223,50%,30%);
+}
+
+input[type="checkbox"]:before{
+    content: '';
+    position: absolute;
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    top: 2px;
+    left: 12px;
+    background: #fff;
+    transition: ease-in-out 0.2s;
+}
+
+input:checked[type="checkbox"]:before{
+    left: 40px;
+}
+
+/* Book count box */
+.book-count{
+    border: 1px solid rgba(24, 77, 104, 0.8);
+    margin-top: 30px;
+    min-width: 220px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 16px;
+    color: rgba(24, 77, 104, 0.8);
+}
+
+h2{
+    text-decoration: underline;
+}
+
+li{
+    list-style-type: none;
+}
