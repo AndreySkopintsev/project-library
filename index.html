@@ -10,6 +10,44 @@
 </head>
 <body>
     <div class="container">
+        <div class="form-container" id="formContainer">
+            <form action="">
+                <button><i class="fas fa-times"></i></button>
+                <h2>Add new book</h2>
+                <div class="input-box">
+                    <label for="book title">Book title:</label>
+                    <input type="text" id="title" placeholder="Title">
+                </div>
+                <div class="input-box">
+                    <label for="book title">Book author:</label>
+                    <input type="text" id="author" placeholder="Author">
+                </div>
+                <div class="input-box">
+                    <label for="book title">Number of pages:</label>
+                    <input type="number" id="pages" placeholder="Number of pages">
+                </div>
+                <div class="input-box">
+                    <label for="book title">Language:</label>
+                    <input type="text" id="language" placeholder="Language">
+                </div>
+                <div class="input-box">
+                    <label for="book title">Publishing date:</label>
+                    <input type="date" id="date">
+                </div>
+                <div class="input-box">
+                    <label for="status">Book status:</label>
+                    <select name="bookStatus" id="bookStatus">
+                        <option value="default" selected>Have you read this book?</option>
+                        <option value="read">I've read this book</option>
+                        <option value="unread">I haven't read this book</option>
+                    </select>
+                </div>
+                <div class="buttons">
+                    <button id="addBook">Add</button>
+                    <button id="clearFields">Clear fields</button>
+                </div>
+            </form>
+        </div>
         <button id="newBook" class="newBook"><i class="fas fa-times"></i></button>
         <header>
             <div class="color-theme">

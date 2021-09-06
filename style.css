@@ -15,15 +15,98 @@
     justify-content: center;
     align-items: center;
     min-width: 370px;
+    height: 100vh;
+    margin: 0;
+}
+
+.form-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    background: rgba(0, 0, 0, 0.2);
+}
+
+form{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    height: 100%;
+    min-width: 370px;
+    background: #fff;
+}
+
+.input-box{
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+    margin-bottom: 10px;
+}
+
+.input-box input{
+    padding-left: 10px;
+    font-size: 16px;
+    border-radius: 5px;
+    border: 1px solid rgba(116, 114, 114,0.5);
+    width: 100%;
+    height: 40px;
+    transition: ease-in-out 0.1s;
+}
+
+.input-box select{
+    height: 40px;
+    border: 1px solid rgba(116, 114, 114,0.5);
+}
+
+.input-box select:focus{
+    outline: none;
+}
+
+.input-box input:focus{
+    border: 1px solid rgba(116, 114, 114,1);
+    outline: none;
+}
+
+.buttons button{
+    border-radius: 10px;
+    cursor: pointer;
+    padding: 5px;
+    font-size: 14px;
+    border: 1px solid rgba(116, 114, 114,0.5);
+    min-width: auto;
+    transition: ease-in-out 0.1s;
+}
+
+.buttons button:hover{
+    color: #fff;
+    background: rgba(141, 138, 138, 0.7);
+}
+
+form button{
+    align-self: flex-end;
+    margin: 10px 20px;
+    font-size: 20px;
+    border: none;
+    background: none;
+    transition: ease-in-out 0.1s;
+}
+
+form>button:hover{
+    cursor: pointer;
+    transform: scale(1.3) rotate(90deg);
 }
 
 .newBook{
     cursor: pointer;
     position: fixed;
-    right: 40px;
-    bottom: 40px;
-    height: 50px;
-    width: 50px;
+    right: 20px;
+    bottom: 20px;
+    height: 40px;
+    width: 40px;
     border-radius: 50%;
     font-size: 20px;
     color: rgba(255, 255, 255, 0.7);
@@ -157,7 +240,7 @@ section{
     flex-direction: column;
     align-items: center;
     width: 100%;
-    min-height: 400px;
+    min-height: 200px;
 }
 
 .order-box{
@@ -207,7 +290,7 @@ span.read{
     flex-wrap: wrap;
     justify-content: center;
     width: 100%;
-    min-height: 400px;
+    min-height: 300px;
 }
 
 .single-book{
@@ -263,6 +346,14 @@ span.read{
     header{
         flex-direction: row;
         justify-content: space-around;
+        min-height: 200px;
+    }
+
+    .newBook{
+        cursor: pointer;
+        position: fixed;
+        right: 40px;
+        bottom: 40px;
     }
 
     .order-box{
