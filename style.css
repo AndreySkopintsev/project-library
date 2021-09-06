@@ -18,9 +18,33 @@
     height: 100vh;
     margin: 0;
 }
+/* Night mode */
+.container.night{
+    background: #181a1b;
+    color: #fff;
+}
+
+.container.night select{
+    color: #fff;
+}
+
+.container.night option{
+    background: #181a1b;
+}
+
+.container.night form{
+    background: #181a1b;
+    color: #fff;
+}
+
+.container.night form input{
+    background: #181a1b;
+}
+
+/* end of night mode*/
 
 .form-container{
-    display: flex;
+    display: none;
     justify-content: center;
     align-items: center;
     position: absolute;
@@ -28,6 +52,10 @@
     height: 100%;
     z-index: 1;
     background: rgba(0, 0, 0, 0.2);
+}
+
+.form-container.visible{
+    display: flex;
 }
 
 form{
@@ -248,16 +276,22 @@ section{
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    background: #f2f2f2;
+    background: rgba(116, 114, 114,0.3);
     min-width: 100%;
     height: 90px;
 }
 
 select{
     width: auto;
-    border: rgba(61, 156, 204, 0.8);
+    border:1px solid rgba(61, 156, 204, 1);
     border-radius: 10px;
+    background: none;
 }
+
+select:focus{
+    outline: none;
+}
+
 .read-notread{
     margin-top: 10px;
     width: 70%;
