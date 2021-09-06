@@ -43,6 +43,7 @@ h1{
 /* Dark mode switch styling */
 
 input[type="checkbox"]{
+    border: 1px solid hsl(223,50%,30%);
     cursor: pointer;
     border-radius: 20px;
     width: 50px;
@@ -67,7 +68,7 @@ input[type="checkbox"]:before{
     width: 15px;
     height: 15px;
     border-radius: 50%;
-    top: 2px;
+    top: 2.5px;
     left: 12px;
     background: #fff;
     transition: ease-in-out 0.2s;
@@ -75,6 +76,32 @@ input[type="checkbox"]:before{
 
 input:checked[type="checkbox"]:before{
     left: 40px;
+}
+
+/* Read unread switch styling */
+#readStatus{
+    border: 1px solid #fff;
+    background: linear-gradient(135deg, #e3e3e3 0%, #5d6874 100%);
+}
+
+#readStatus::before{
+    content: '';
+    position: absolute;
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    top: 2px;
+    left: 3px;
+    background: #fff;
+    transition: ease-in-out 0.2s;
+}
+
+#readStatus:checked{
+    background: linear-gradient(135deg, rgba(24, 77, 104, 0.8) 0%, rgba(87, 202, 133, 0.8) 100%);
+}
+
+#readStatus:checked::before{
+    left: 32px;
 }
 
 /* Book count box */
@@ -101,7 +128,7 @@ li{
 section{
     display: flex;
     flex-direction: column;
-    min-width: 350px;
+    max-width: 350px;
     min-height: 400px;
 }
 
@@ -150,3 +177,38 @@ select{
 }
 
 /* single book styling */
+.single-book{
+    position: relative;
+    color: #fff;
+    padding: 10px;
+    margin-top: 10px;
+    border-radius: 5px;
+    background: linear-gradient(135deg, rgba(24, 77, 104, 0.8) 0%, rgba(87, 202, 133, 0.8) 100%);
+}
+
+.single-book button{
+    position: absolute;
+    top: 2px;
+    right: 10px;
+    background: none;
+    border: none;
+    color: rgba(255, 255, 255, 0.616);
+    font-size: 18px;
+    transition: ease-in-out 0.2s;
+}
+
+.single-book button:hover{
+    cursor: pointer;
+    transform: rotate(90deg) scale(1.5);
+    color: rgba(255, 255, 255, 1);
+}
+
+.single-book input{
+    position: absolute;
+    bottom: 5px;
+    right: 5px;
+}
+
+.single-book h2{
+    text-align: center;
+}
