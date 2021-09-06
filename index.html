@@ -15,7 +15,7 @@
                 <label class="color-theme-label" for="Dark mode">Dark mode</label>
                 <input type="checkbox" id="darkMode">
             </div>
-            <h1>Library</h1>
+            <h1>My Library</h1>
             <div class="book-count">
                 <h2>Library log</h2>
                 <ul>
@@ -26,7 +26,34 @@
             </div>
         </header>
         <section>
-
+            <div class="order-box">
+                <div class="order">
+                    <label for="order">Order By:</label>
+                    <select name="order_by" id="orderBy">
+                        <option value="addition">Date of addition</option>
+                        <option value="publishing">Date of publishing</option>
+                    </select>
+                    <select name="order_by" id="orderBy">
+                        <option value="ascend">Ascending</option>
+                        <option value="descend">Descending</option>
+                    </select>
+                </div>
+                <div class="read-notread">
+                    <div class="status">
+                        <span class="read"></span>
+                        <p>Read</p>
+                    </div>
+                    <div class="status">
+                        <span class="notread"></span>
+                        <p>Not read</p>
+                    </div>
+                </div>
+            </div>
+            <div id="booksContainer" class="books-container">
+                <div class="single-book">
+                    
+                </div>
+            </div>
         </section>
     </div>
 </body>
