@@ -8,11 +8,160 @@
 }
 
 .container{
+    position: relative;
     padding: 10px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    min-width: 370px;
+    height: 100vh;
+    margin: 0;
+}
+/* Night mode */
+.container.night{
+    background: #181a1b;
+    color: #fff;
+}
+
+.container.night select{
+    color: #fff;
+}
+
+.container.night option{
+    background: #181a1b;
+}
+
+.container.night form{
+    background: #181a1b;
+    color: #fff;
+}
+
+.container.night form input{
+    background: #181a1b;
+}
+
+.container.night .book-count{
+    border: 1px solid rgba(101, 186, 228, 0.8);
+    margin-top: 30px;
+    min-width: 220px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 16px;
+    color: rgba(101, 186, 228, 0.8);
+}
+
+/* end of night mode*/
+
+.form-container{
+    display: none;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    background: rgba(0, 0, 0, 0.2);
+}
+
+.form-container.visible{
+    display: flex;
+}
+
+form{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    height: 100%;
+    min-width: 370px;
+    background: #fff;
+}
+
+.input-box{
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+    margin-bottom: 10px;
+}
+
+.input-box input{
+    padding-left: 10px;
+    font-size: 16px;
+    border-radius: 5px;
+    border: 1px solid rgba(116, 114, 114,0.5);
+    width: 100%;
+    height: 40px;
+    transition: ease-in-out 0.1s;
+}
+
+.input-box select{
+    height: 40px;
+    border: 1px solid rgba(116, 114, 114,0.5);
+}
+
+.input-box select:focus{
+    outline: none;
+}
+
+.input-box input:focus{
+    border: 1px solid rgba(116, 114, 114,1);
+    outline: none;
+}
+
+.buttons button{
+    border-radius: 10px;
+    cursor: pointer;
+    padding: 5px;
+    font-size: 14px;
+    border: 1px solid rgba(116, 114, 114,0.5);
+    min-width: auto;
+    transition: ease-in-out 0.1s;
+}
+
+.buttons button:hover{
+    color: #fff;
+    background: rgba(141, 138, 138, 0.7);
+}
+
+form button{
+    align-self: flex-end;
+    margin: 10px 20px;
+    font-size: 20px;
+    border: none;
+    background: none;
+    transition: ease-in-out 0.1s;
+}
+
+form>button:hover{
+    cursor: pointer;
+    transform: scale(1.3) rotate(90deg);
+}
+
+.newBook{
+    cursor: pointer;
+    position: fixed;
+    right: 20px;
+    bottom: 20px;
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+    font-size: 20px;
+    color: rgba(255, 255, 255, 0.7);
+    background: linear-gradient(135deg, #2196f3 0%, #1565c0 100%);
+    border: none;
+    z-index: 1;
+    transition: ease-in-out 0.2s;
+}
+
+.newBook i{
+    transform: rotate(45deg);
+}
+
+.newBook:hover {
+    transform: rotate(90deg) scale(1.3);
+    color: rgba(255, 255, 255, 1);
 }
 
 header{
@@ -22,7 +171,7 @@ header{
     justify-content: center;
     align-items: center;
     min-height: 300px;
-    min-width: 350px;
+    min-width: 90%;
 }
 
 h1{
@@ -68,7 +217,7 @@ input[type="checkbox"]:before{
     width: 15px;
     height: 15px;
     border-radius: 50%;
-    top: 2.5px;
+    top: 2px;
     left: 12px;
     background: #fff;
     transition: ease-in-out 0.2s;
@@ -128,8 +277,9 @@ li{
 section{
     display: flex;
     flex-direction: column;
-    max-width: 350px;
-    min-height: 400px;
+    align-items: center;
+    width: 100%;
+    min-height: 200px;
 }
 
 .order-box{
@@ -137,16 +287,22 @@ section{
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    background: #f2f2f2;
-    min-width: 330px;
+    background: rgba(116, 114, 114,0.3);
+    min-width: 100%;
     height: 90px;
 }
 
 select{
     width: auto;
-    border: rgba(61, 156, 204, 0.8);
+    border:1px solid rgba(61, 156, 204, 1);
     border-radius: 10px;
+    background: none;
 }
+
+select:focus{
+    outline: none;
+}
+
 .read-notread{
     margin-top: 10px;
     width: 70%;
@@ -160,29 +316,41 @@ select{
     align-items: center;
 }
 
-.read{
+.status span{
     margin-right: 10px;
     height: 20px;
     width: 30px;
     border-radius: 5px;
+    background: linear-gradient(135deg, #b3b0b0 0%, #5d6874 100%);
+}
+
+span.read{
     background: linear-gradient(135deg, rgba(24, 77, 104, 0.8) 0%, rgba(87, 202, 133, 0.8) 100%);
 }
 
-.notread{
-    margin-right: 10px;
-    height: 20px;
-    width: 30px;
-    border-radius: 5px;
-    background: linear-gradient(135deg, #e3e3e3 0%, #5d6874 100%);
+/* single book styling */
+.books-container{
+    display: flex;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 100%;
+    min-height: 300px;
 }
 
-/* single book styling */
 .single-book{
+    font-size: 14px;
+    min-width: 300px;
+    max-height: 240px;
     position: relative;
     color: #fff;
     padding: 10px;
-    margin-top: 10px;
+    margin: 10px;
     border-radius: 5px;
+    background: linear-gradient(135deg, #b3b0b0 0%, #5d6874 100%);
+}
+
+.single-book.read{
     background: linear-gradient(135deg, rgba(24, 77, 104, 0.8) 0%, rgba(87, 202, 133, 0.8) 100%);
 }
 
@@ -211,4 +379,44 @@ select{
 
 .single-book h2{
     text-align: center;
+}
+
+/* Media queries */
+
+@media (min-width:768px){
+    .container{
+        width: 100%;
+    }
+
+    header{
+        flex-direction: row;
+        justify-content: space-around;
+        min-height: 200px;
+    }
+
+    .newBook{
+        cursor: pointer;
+        position: fixed;
+        right: 40px;
+        bottom: 40px;
+    }
+
+    .order-box{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+    }
+
+    .read-notread{
+        margin-top: 10px;
+        width: 20%;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+    }
+
+    .books-container{
+        display: flex;
+        justify-content: flex-start;
+    }
 }
