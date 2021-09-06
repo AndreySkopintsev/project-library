@@ -1,11 +1,13 @@
 // Geneeral elements
+const monthNames = ["January", "February", "March", "April", "May", "June",
+  "July", "August", "September", "October", "November", "December"
+];
 const formContainer = document.getElementById('formContainer')
 const newBook = document.getElementById('newBook')
 const closeForm = document.getElementById('closeForm')
 const booksContainer = document.getElementById('booksContainer')
-const monthNames = ["January", "February", "March", "April", "May", "June",
-  "July", "August", "September", "October", "November", "December"
-];
+const darkMode = document.getElementById('darkMode')
+const container = document.querySelector('.container')
 
 // Book related fields
 const bookTitle = document.getElementById('title')
@@ -80,4 +82,8 @@ newBook.addEventListener('click',()=>{
 closeForm.addEventListener('click',(e)=>{
     e.preventDefault()
     formContainer.classList.remove('visible')
+})
+
+darkMode.addEventListener('change',()=>{
+    container.classList.toggle('night')
 })

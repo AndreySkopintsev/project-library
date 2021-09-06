@@ -41,6 +41,17 @@
     background: #181a1b;
 }
 
+.container.night .book-count{
+    border: 1px solid rgba(101, 186, 228, 0.8);
+    margin-top: 30px;
+    min-width: 220px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 16px;
+    color: rgba(101, 186, 228, 0.8);
+}
+
 /* end of night mode*/
 
 .form-container{
