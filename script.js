@@ -2,7 +2,6 @@
 const monthNames = ["January", "February", "March", "April", "May", "June",
   "July", "August", "September", "October", "November", "December"
 ];
-const books = [{title:"Game of thrones",author:"George R. R. Martin",pages:"694",language:"English",published:"July 1 1996",status:"read"}]
 const formContainer = document.getElementById('formContainer')
 const newBook = document.getElementById('newBook')
 const closeForm = document.getElementById('closeForm')
@@ -18,6 +17,20 @@ const bookLanguage = document.getElementById('language')
 const bookPublished = document.getElementById('date')
 const bookStatus = document.getElementById('bookStatus')
 
+// Book count 
+const totalBooks = document.getElementById('totalCount')
+const totalRead = document.getElementById('totalRead')
+const totalUnread = document.getElementById('totalUnread')
+
+//Books array
+let books = [{title:"Game of thrones",author:"George R. R. Martin",pages:"694",language:"English",published:"July 1 1996",status:"read"},
+                {title:"The Hobbit",
+                 author:"J. R. R. Tolkien",
+                 pages:"310",
+                 language:"English",
+                 published:"21 September 1937",
+                 status:"read"}]
+
 // Book constructor
 function Book(title,author,pages,language,published,status){
     this.title = title
@@ -26,6 +39,13 @@ function Book(title,author,pages,language,published,status){
     this.language = language
     this.published = published
     this.status = status
+}
+
+//Render total numbers
+function totalNumbers(array){
+    totalBooks.textContent = array.length
+    totalRead.textContent = array.filter(item => item.status == 'read').length
+    totalUnread.textContent = array.filter(item => item.status == 'unread').length
 }
 
 //Rendering books
@@ -63,23 +83,38 @@ function renderBooks(){
 
 //Hooking up single book's buttons
 function singleBookBtns(div){
-    console.log(div.querySelector('#readStatus'))
+    // Change status button
     div.querySelector('#readStatus').addEventListener('change',()=>{
-        console.log(div.classList)
+        changeStatus(div)
+        totalNumbers(books)
         div.classList.toggle('read')
     })
+    // Delete button
     div.querySelector('button').addEventListener('click',()=>{
-        console.log('deleted')
+        let title = div.querySelector('h2').textContent
+        books = books.filter(book => book.title !== title)
+        renderBooks()
+        totalNumbers(books)
     })
 } 
 
+// Changing book status in array
+function changeStatus(book){
+    let title = book.querySelector('h2').textContent
+    let foundBook = books.find(book => book.title == title)
+    let index = books.indexOf(foundBook)
+    foundBook.status = foundBook.status == 'read' ? 'unread' : 'read'
+    books[index] = foundBook
+    console.log(books)
+}
+
 renderBooks()
+totalNumbers(books)
 
 // Event listeners
 formContainer.addEventListener('submit',(e)=>{
     e.preventDefault()
     let date = new Date(bookPublished.value)
-    console.log(date.getDate())
     let fullDate = `${monthNames[date.getMonth()]} ${date.getDate()} ${date.getFullYear()}`
     let book = new Book(
                         bookTitle.value,
