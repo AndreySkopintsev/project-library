@@ -8,6 +8,8 @@ const closeForm = document.getElementById('closeForm')
 const booksContainer = document.getElementById('booksContainer')
 const darkMode = document.getElementById('darkMode')
 const container = document.querySelector('.container')
+const inputBoxes = document.querySelectorAll('.input-box')
+
 
 // Book related fields
 const bookTitle = document.getElementById('title')
@@ -105,7 +107,19 @@ function changeStatus(book){
     let index = books.indexOf(foundBook)
     foundBook.status = foundBook.status == 'read' ? 'unread' : 'read'
     books[index] = foundBook
-    console.log(books)
+}
+
+// Form validation
+function formValidation(){
+    inputBoxes.forEach(box => {
+        if(box.querySelector('input')){
+            if(box.querySelector('input').value == ''){
+                box.classList.add('error')
+            }else{
+                return
+            }
+        }
+    })
 }
 
 renderBooks()
@@ -114,24 +128,38 @@ totalNumbers(books)
 // Event listeners
 formContainer.addEventListener('submit',(e)=>{
     e.preventDefault()
-    let date = new Date(bookPublished.value)
-    let fullDate = `${monthNames[date.getMonth()]} ${date.getDate()} ${date.getFullYear()}`
-    let book = new Book(
-                        bookTitle.value,
-                        bookAuthor.value,
-                        bookPages.value,
-                        bookLanguage.value,
-                        fullDate,
-                        bookStatus.value)
-    books.push(book)
-    renderBooks()
-    formContainer.classList.remove('visible')
-    bookTitle.value = ''
-    bookAuthor.value = ''
-    bookPages.value = ''
-    bookLanguage.value = ''
-    bookPublished.value = ''
-    bookStatus.value = ''
+    formValidation()
+    const inputs = (formContainer.querySelectorAll('input')).values()
+    for(input of inputs){
+        if(!input.value){
+            break
+        }else{
+            let date = new Date(bookPublished.value)
+            let fullDate = `${monthNames[date.getMonth()]} ${date.getDate()} ${date.getFullYear()}`
+            let book = new Book(
+                                bookTitle.value,
+                                bookAuthor.value,
+                                bookPages.value,
+                                bookLanguage.value,
+                                fullDate,
+                                bookStatus.value)
+            books.push(book)
+            renderBooks()
+            formContainer.classList.remove('visible')
+            bookTitle.value = ''
+            bookAuthor.value = ''
+            bookPages.value = ''
+            bookLanguage.value = ''
+            bookPublished.value = ''
+            bookStatus.value = ''
+            inputBoxes.forEach(box => {
+                if(box.querySelector('input')){
+                    box.classList.remove('error')
+                }
+            })
+        }
+    }
+    
 })
 
 newBook.addEventListener('click',()=>{
